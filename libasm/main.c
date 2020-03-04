@@ -6,7 +6,7 @@
 /*   By: jfeuilla <jfeuilla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 14:15:50 by jfeuilla          #+#    #+#             */
-/*   Updated: 2020/03/04 17:06:14 by jfeuilla         ###   ########.fr       */
+/*   Updated: 2020/03/04 20:41:05 by jfeuilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,21 @@
 #include <string.h>
 #include <stdio.h>
 
-# define STRLEN(x)			printf("'%s' = %d, exp %d %s\n", x, ft_strlen(x), (int)strlen(x), (ft_strlen(x) == (int)strlen(x) ? "✔" : "✘"));
+# define STRLEN(x)			printf("'%s' = %lu, exp %lu %s\n", x, ft_strlen(x), strlen(x), (ft_strlen(x) == strlen(x) ? "✔" : "✘"));
 
-# define STRCPY(x, y)			printf("'%s'= %s, exp %s %s\n", x, ft_strcpy(x, y), strcpy(x, y), (strcmp(ft_strcpy(x, y), strcpy(x, y)) == 0 ? "✔" : "✘"));
+# define STRCPY(x, y)			printf("'%s'= '%s', exp '%s' %s\n", x, ft_strcpy(x, y), strcpy(x, y), (strcmp(ft_strcpy(x, y), strcpy(x, y)) == 0 ? "✔" : "✘"));
 
 # define STRCMP(x, y)			printf("'%s', '%s'= %d, exp %d %s\n", x, y, ft_strcmp(x, y), strcmp(x, y), (ft_strcmp(x, y) == strcmp(x, y) ? "✔" : "✘"));
 
-int		ft_strlen(char const *str);
-char	*ft_strcpy(char *dst, char const *src);
-int		ft_strcmp(char const *s1, char const *s2);
+# define WRITE(x, y, z)			printf("'%s' = %ld, exp %ld %s\n", y, ft_write(x, y, z), write(x, y, z), (ft_write(x, y, z) == write(x, y, z) ? "✔" : "✘"));
+
+# define READ(x, y, z)			printf("'%s' = %ld, exp %ld %s\n", y, ft_read(x, y, z), read(x, y, z), (ft_read(x, y, z) == read(x, y, z) ? "✔" : "✘"));
+
+size_t	ft_strlen(const char *s);
+char	*ft_strcpy(char * dst, const char * src);
+int		ft_strcmp(const char *s1, const char *s2);
+ssize_t ft_write(int fildes, const void *buf, size_t nbyte);
+ssize_t ft_read(int fildes, void *buf, size_t nbyte);
 
 int main()
 {
@@ -41,4 +47,16 @@ int main()
 	STRCMP("", "yo");
 	STRCMP("yo", "");
 	STRCMP("", "");
+	printf("\033[0;97m"); printf("\n---write---\n"); printf("\033[0m");
+	WRITE(-1, "yo", 2);
+	WRITE(-1, "", 0);
+	WRITE(0, "yo", 2);
+	WRITE(0, "", 0);
+	WRITE(1, "yo", 2);
+	WRITE(1, "", 0);
+	printf("\033[0;97m"); printf("\n---read---\n"); printf("\033[0m");
+	READ(-1, str, 0);
+	READ(-1, str, 1);
+	READ(1, str, 0);
+
 }

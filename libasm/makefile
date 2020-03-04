@@ -6,7 +6,7 @@
 #    By: jfeuilla <jfeuilla@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/03 18:06:33 by jfeuilla          #+#    #+#              #
-#    Updated: 2020/03/04 16:15:35 by jfeuilla         ###   ########.fr        #
+#    Updated: 2020/03/04 18:30:14 by jfeuilla         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,8 @@ TEST		= test
 SRC			= ft_strlen.s\
 			  ft_strcpy.s\
 			  ft_strcmp.s\
+			  ft_write.s\
+			  ft_read.s\
 
 OBJ			=	$(SRC:.s=.o)
 
