@@ -6,17 +6,18 @@
 #    By: jfeuilla <jfeuilla@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/03 18:06:33 by jfeuilla          #+#    #+#              #
-#    Updated: 2020/03/04 14:12:41 by jfeuilla         ###   ########.fr        #
+#    Updated: 2020/03/04 14:28:42 by jfeuilla         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+.PHONY: all clean fclean re
 
 NA			= nasm
 NA_FLAGS	= -f macho64
 FLAGS		= -Wall -Werror -Wextra
 NAME 		= libasm.a
-OBJ_PATH	= ./obj
 
-TEST		= main.c\
+TEST		= test
 
 SRC			= ft_strlen.s\
 
@@ -28,18 +29,17 @@ OBJ			=	$(SRC:.s=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-		 ar rcs ${NAME} ${OBJ}
+		 ar rcs $(NAME) $(OBJ)
 
 test:	$(NAME)
-		gcc $(FLAGS) $(NAME) $(TEST)
-		./a.out
+		gcc $(FLAGS) $(NAME) -o $(TEST) main.c
+		./$(TEST)
+		rm $(TEST)
 
 clean:
 		rm -rf $(OBJ)
 
 fclean: clean
-		rm -rf $(NAME) $(TEST)
+		rm -rf $(NAME)
 
 re: fclean all
-
-.PHONY: all clean fclean re
