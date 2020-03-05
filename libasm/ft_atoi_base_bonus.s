@@ -4,7 +4,7 @@
 _ft_atoi_base:
 			xor		rax, rax
 			xor		rcx, rcx
-			mov		rbx, 1
+			mov 	r15, 1
 check_base:
 			xor		rdx, rdx
 			cmp		BYTE [rsi + rcx], 0
@@ -25,11 +25,11 @@ check_base:
 			je		return
 			cmp		BYTE [rsi + rcx], 13
 			je		return
-			mov		dl, BYTE [rsi + rcx]
+			mov		r9b, BYTE [rsi + rcx]
 			mov		rdx, rcx
 check_double:
 			inc		rdx
-			cmp		dl, BYTE [rsi + rdx]
+			cmp		r9b, BYTE [rsi + rdx]
 			je		return
 			cmp		BYTE [rsi + rdx], 0
 			jne		check_double
@@ -55,19 +55,22 @@ sign:
 			je		inc_sign
 			cmp		BYTE [rdi + rdx], 43
 			je		inc_sign
+			mov		r10, rdx
 			jmp		atoi
 inc_sign:	
 			inc		rdx
-			cmp		BYTE [rdi + rdx - 1], 45
+			cmp		BYTE [rdi + rdx - 1], 43
 			je		sign
-			neg		rbx
+			neg		r15
 			jmp		sign
 atoi:
-			cmp		BYTE [rdi + rdx], 0
+			cmp		BYTE [rdi + r10], 0
 			je		return
-			mov		dl, BYTE [rdi + rdx]
+			mov		dl, BYTE [rdi + r10]
 			xor		r8, r8
-index:		
+index:
+			cmp		BYTE [rsi +r8], 0
+			je		error
 			cmp		dl, BYTE [rsi + r8]
 			je		add_index
 			inc		r8
@@ -75,11 +78,20 @@ index:
 add_index:
 			mul		rcx
 			add		rax, r8
+			inc		r10
 			jmp		atoi
 return:
-			cmp		rbx, 1
+			cmp		r15, 1
 			jne		retneg
 			ret
 retneg:
 			neg		rax
+			ret
+error:
+			xor		rax, rax
+			ret
+
+
+test:
+			mov		rax, 9
 			ret
