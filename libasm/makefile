@@ -6,7 +6,7 @@
 #    By: jfeuilla <jfeuilla@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/03 18:06:33 by jfeuilla          #+#    #+#              #
-#    Updated: 2020/03/04 18:30:14 by jfeuilla         ###   ########.fr        #
+#    Updated: 2020/03/05 13:57:25 by jfeuilla         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRC			= ft_strlen.s\
 			  ft_strcmp.s\
 			  ft_write.s\
 			  ft_read.s\
+			  ft_strdup.s\
 
 OBJ			=	$(SRC:.s=.o)
 

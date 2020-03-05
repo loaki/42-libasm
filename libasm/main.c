@@ -6,7 +6,7 @@
 /*   By: jfeuilla <jfeuilla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 14:15:50 by jfeuilla          #+#    #+#             */
-/*   Updated: 2020/03/04 20:41:05 by jfeuilla         ###   ########.fr       */
+/*   Updated: 2020/03/05 14:06:42 by jfeuilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,14 @@
 
 # define READ(x, y, z)			printf("'%s' = %ld, exp %ld %s\n", y, ft_read(x, y, z), read(x, y, z), (ft_read(x, y, z) == read(x, y, z) ? "✔" : "✘"));
 
+# define STRDUP(x)			printf("'%s' = '%s', exp '%s' %s\n", x, ft_strdup(x), strdup(x), (strcmp(ft_strdup(x), strdup(x)) == 0 ? "✔" : "✘"));
+
 size_t	ft_strlen(const char *s);
 char	*ft_strcpy(char * dst, const char * src);
 int		ft_strcmp(const char *s1, const char *s2);
 ssize_t ft_write(int fildes, const void *buf, size_t nbyte);
 ssize_t ft_read(int fildes, void *buf, size_t nbyte);
+char	*ft_strdup(const char *s1);
 
 int main()
 {
@@ -57,6 +60,9 @@ int main()
 	printf("\033[0;97m"); printf("\n---read---\n"); printf("\033[0m");
 	READ(-1, str, 0);
 	READ(-1, str, 1);
+	READ(0, str, 2);
 	READ(1, str, 0);
-
+	printf("\033[0;97m"); printf("\n---strdup---\n"); printf("\033[0m");
+	STRDUP("yo");
+	STRDUP("");
 }
