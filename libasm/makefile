@@ -6,7 +6,7 @@
 #    By: jfeuilla <jfeuilla@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/03 18:06:33 by jfeuilla          #+#    #+#              #
-#    Updated: 2020/03/05 16:41:53 by jfeuilla         ###   ########.fr        #
+#    Updated: 2020/03/05 16:57:46 by jfeuilla         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,6 +57,6 @@ test:		$(NAME)
 bonus:		$(OBJ) $(OBJ_BONUS)
 			ar rcs $(NAME) $(OBJ) $(OBJ_BONUS)
 
-testbonus:	$(BONUS)
-			gcc $(FLAGS) $(BONUS) -o $(TESTBONUS) main_bonus.c
+testbonus:	bonus
+			gcc $(FLAGS) $(NAME) -o $(TESTBONUS) main_bonus.c
 			./$(TESTBONUS)
