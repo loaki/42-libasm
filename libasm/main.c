@@ -6,7 +6,7 @@
 /*   By: jfeuilla <jfeuilla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 14:15:50 by jfeuilla          #+#    #+#             */
-/*   Updated: 2020/03/05 14:06:42 by jfeuilla         ###   ########.fr       */
+/*   Updated: 2020/03/05 15:29:32 by jfeuilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ int main()
 	printf("\033[0;97m"); printf("\n---read---\n"); printf("\033[0m");
 	READ(-1, str, 0);
 	READ(-1, str, 1);
-	READ(0, str, 2);
 	READ(1, str, 0);
+	READ(5, str, 2);
 	printf("\033[0;97m"); printf("\n---strdup---\n"); printf("\033[0m");
 	STRDUP("yo");
 	STRDUP("");
