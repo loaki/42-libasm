@@ -70,7 +70,7 @@ atoi:
 			xor		r8, r8
 index:
 			cmp		BYTE [rsi +r8], 0
-			je		error
+			je		return
 			cmp		dl, BYTE [rsi + r8]
 			je		add_index
 			inc		r8
@@ -86,12 +86,4 @@ return:
 			ret
 retneg:
 			neg		rax
-			ret
-error:
-			xor		rax, rax
-			ret
-
-
-test:
-			mov		rax, 9
 			ret
