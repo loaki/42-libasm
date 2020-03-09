@@ -6,7 +6,7 @@
 #    By: jfeuilla <jfeuilla@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/03 18:06:33 by jfeuilla          #+#    #+#              #
-#    Updated: 2020/03/05 16:57:46 by jfeuilla         ###   ########.fr        #
+#    Updated: 2020/03/09 15:38:21 by jfeuilla         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,8 @@ SRC			= ft_strlen.s\
 			  ft_strdup.s\
 
 SRC_BONUS	= ft_atoi_base_bonus.s\
+			  ft_list_push_front_bonus.s\
+			  ft_list_size_bonus.s\
 
 OBJ			= $(SRC:.s=.o)
 
@@ -50,7 +52,7 @@ fclean: 	clean
 
 re: 		fclean all
 
-test:		$(NAME)
+test:		all
 			gcc $(FLAGS) $(NAME) -o $(TEST) main.c
 			./$(TEST)
 
