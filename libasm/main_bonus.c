@@ -6,7 +6,7 @@
 /*   By: jfeuilla <jfeuilla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 16:39:33 by jfeuilla          #+#    #+#             */
-/*   Updated: 2020/03/09 15:32:40 by jfeuilla         ###   ########.fr       */
+/*   Updated: 2020/03/09 20:50:32 by jfeuilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void			clear_list(t_list *list)
 int		ft_atoi_base(char *str, char *base);
 void	ft_list_push_front(t_list **begin_list, void *data);
 int		ft_list_size(t_list *begin_list);
+void	ft_list_sort(t_list **begin_list,int (*cmp)());
 
 int main()
 {
@@ -90,4 +91,12 @@ int main()
 	printf("list :"); print_list(list_push);
 	printf("nb elem : %d\n", ft_list_size(list_push));
 
+	printf("\033[0;97m"); printf("\n---list_sort---\n"); printf("\033[0m");
+	t_list *list_sort = &list;
+	printf("list :"); print_list(list_sort);
+	ft_list_sort(&list_sort, &strcmp);
+	printf("sorted :"); print_list(list_sort);
+	printf("list :"); print_list(list_push);
+	ft_list_sort(&list_push, &strcmp);
+	printf("sorted :"); print_list(list_push);
 }	
