@@ -6,7 +6,7 @@
 /*   By: jfeuilla <jfeuilla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 16:39:33 by jfeuilla          #+#    #+#             */
-/*   Updated: 2020/03/09 20:50:32 by jfeuilla         ###   ########.fr       */
+/*   Updated: 2020/03/10 17:13:39 by jfeuilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int		ft_atoi_base(char *str, char *base);
 void	ft_list_push_front(t_list **begin_list, void *data);
 int		ft_list_size(t_list *begin_list);
 void	ft_list_sort(t_list **begin_list,int (*cmp)());
+void	ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)(), void (*free_fct)(void*));
 
 int main()
 {
@@ -99,4 +100,14 @@ int main()
 	printf("list :"); print_list(list_push);
 	ft_list_sort(&list_push, &strcmp);
 	printf("sorted :"); print_list(list_push);
+
+	printf("\033[0;97m"); printf("\n---list_remove_if---\n"); printf("\033[0m");
+	t_list *list_remove = &list;
+	ft_list_push_front(&list_remove, strdup("salut"));
+	ft_list_push_front(&list_remove, strdup("shrek"));
+	printf("list :"); print_list(list_remove);
+	ft_list_remove_if(&list_remove, "salut", &strcmp, &free);
+	printf("remove 'salut' :"); print_list(list_remove);
+	ft_list_remove_if(&list_sort, "shrek", &strcmp, &free);
+	printf("remove 'shrek' :"); print_list(list_sort);
 }	
