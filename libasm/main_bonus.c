@@ -6,7 +6,7 @@
 /*   By: jfeuilla <jfeuilla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 16:39:33 by jfeuilla          #+#    #+#             */
-/*   Updated: 2020/03/10 17:13:39 by jfeuilla         ###   ########.fr       */
+/*   Updated: 2020/03/11 14:55:07 by jfeuilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,9 +105,10 @@ int main()
 	t_list *list_remove = &list;
 	ft_list_push_front(&list_remove, strdup("salut"));
 	ft_list_push_front(&list_remove, strdup("shrek"));
+	ft_list_push_front(&list_remove, strdup("pouet"));
 	printf("list :"); print_list(list_remove);
 	ft_list_remove_if(&list_remove, "salut", &strcmp, &free);
 	printf("remove 'salut' :"); print_list(list_remove);
-	ft_list_remove_if(&list_sort, "shrek", &strcmp, &free);
-	printf("remove 'shrek' :"); print_list(list_sort);
+	ft_list_remove_if(&list_remove, "pouet", &strcmp, &free);
+	printf("remove 'pouet' :"); print_list(list_remove);
 }	
