@@ -1,6 +1,5 @@
 			section	.text
 			global	_ft_list_remove_if
-			extern	_free
 
 _ft_list_remove_if:
 			cmp		rdi, 0
